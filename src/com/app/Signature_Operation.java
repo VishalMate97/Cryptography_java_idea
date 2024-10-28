@@ -43,22 +43,6 @@ public class Signature_Operation {
         return signature.verify(decode(signatureData));
     }
 
-//    public static String encrypt(String message) throws Exception{
-//        Cipher cipher = Cipher.getInstance("RSA");
-//        cipher.init(1, publicKey);
-//
-//        return encode(cipher.doFinal(message.getBytes()));
-//    }
-//
-//    public static String decrypt(String encryptedMessageString) throws Exception{
-//        byte[] encryptedMessageBytes = decode(encryptedMessageString);
-//
-//        Cipher cipher = Cipher.getInstance("RSA");
-//        cipher.init(2, privateKey);
-//
-//        return new String(cipher.doFinal(encryptedMessageBytes), StandardCharsets.UTF_8);
-//    }
-
     public static String encode(byte[] data) {
         return Base64.getEncoder().encodeToString(data);
     }
