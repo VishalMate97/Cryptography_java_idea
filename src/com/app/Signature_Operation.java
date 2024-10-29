@@ -19,6 +19,10 @@ public class Signature_Operation {
 
         publicKey = keyPair.getPublic();
         privateKey = keyPair.getPrivate();
+
+//        System.out.println("Signature Operation - public key : " + publicKey);
+//        System.out.println("Signature Operation - private key : " + publicKey);
+
     }
 
     public static String sign(String message) throws Exception {

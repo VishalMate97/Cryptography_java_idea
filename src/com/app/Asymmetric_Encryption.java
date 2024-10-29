@@ -18,6 +18,9 @@ public class Asymmetric_Encryption {
 
         publicKey = keyPair.getPublic();
         privateKey = keyPair.getPrivate();
+
+//        System.out.println("Asymmetric Encryption Operation - public key : " + publicKey);
+//        System.out.println("Asymmetric Encryption Operation - private key : " + publicKey);
     }
 
     public static String encrypt(String message) throws Exception{

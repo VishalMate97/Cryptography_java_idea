@@ -17,6 +17,8 @@ public class Symmetric_Encryption {
         keyGenerator.init(256, secureRandom);
 
         secretKey = keyGenerator.generateKey();
+
+//        System.out.println("Symmetric Encryption Operation -  Secrete key : " + secretKey);
     }
 
     public static String encrypt(String message) throws Exception{
