@@ -1,6 +1,8 @@
 import com.app.Asymmetric_Encryption;
+import com.app.Certificate_Operation;
 import com.app.Signature_Operation;
 import com.app.Symmetric_Encryption;
+import java.security.PublicKey;
 
 public class ApplicationStart {
 
@@ -9,7 +11,7 @@ public class ApplicationStart {
 
         // Symmetric Encryption ---------------------------------------------------
 
-        System.out.println("Symmetric Key Encrpytion");
+        System.out.println("Symmetric Key Encryption");
         Symmetric_Encryption.init();
         System.out.println("Plaintext Message: " + plainText);
 
@@ -23,7 +25,7 @@ public class ApplicationStart {
 
         // Asymmetric Encryption ---------------------------------------------------
 
-        System.out.println("Asymmetric Key Encrpytion");
+        System.out.println("Asymmetric Key Encryption");
         Asymmetric_Encryption.init();
         System.out.println("Plaintext Message: " + plainText);
 
@@ -48,7 +50,17 @@ public class ApplicationStart {
         Boolean verifySignature = Signature_Operation.verify(plainText, signatureData);
         System.out.println("Signature Verification: " + verifySignature);
 
+        System.out.println("------------------------------------------------");
+
+        // Certificate ---------------------------------------------------
+
+        String certificateFilePath = "D:\\OneDrive - Bizsolindia IT Services Pvt. Ltd\\Desktop\\dgftPublicCertificate.txt";
+        System.out.println("Certificate Operation");
+
+        PublicKey publicKey = Certificate_Operation.getPublicKeyFromCertificate(certificateFilePath);
+        System.out.println("Public Key from Certificate: " + publicKey);
+
+        System.out.println("------------------------------------------------");
 
     }
-
 }
