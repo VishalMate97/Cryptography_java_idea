@@ -29,7 +29,7 @@ public class Signature_Operation {
         SecureRandom secureRandom = new SecureRandom();
 
         Signature signature =  Signature.getInstance("SHA256WithDSA");
-//        Signature signature = Signature.getInstance("SHA256withRSA");
+        /* Signature signature = Signature.getInstance("SHA256withRSA"); */
         signature.initSign(privateKey, secureRandom);
 
         signature.update(message.getBytes(StandardCharsets.UTF_8));

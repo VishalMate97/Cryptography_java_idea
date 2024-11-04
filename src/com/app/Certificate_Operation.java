@@ -9,7 +9,7 @@ import java.util.Base64;
 
 public class Certificate_Operation {
 
-    public static PublicKey getPublicKeyFromCertificate(String certificate_file_path) throws CertificateException, IOException {
+    public static Certificate getCertificate(String certificate_file_path) throws CertificateException, IOException {
     // Read the entire file content as a Base64-encoded string
         String base64Certificate = readCertificateFile(certificate_file_path);
 
@@ -19,7 +19,15 @@ public class Certificate_Operation {
         // Use the decoded bytes to create an InputStream for the CertificateFactory
         InputStream inputStream = new ByteArrayInputStream(decodedBytes);
         CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-        Certificate certificate = certificateFactory.generateCertificate(inputStream);
+        Certificate certificate;
+        certificate = certificateFactory.generateCertificate(inputStream);
+
+        return certificate;
+    }
+
+
+    public static PublicKey getPublicKeyFromCertificate(String certificate_file_path) throws CertificateException, IOException {
+        Certificate certificate = getCertificate(certificate_file_path);
 
         return certificate.getPublicKey();
     }

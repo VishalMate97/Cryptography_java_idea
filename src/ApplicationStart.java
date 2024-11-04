@@ -1,12 +1,10 @@
-import com.app.Asymmetric_Encryption;
-import com.app.Certificate_Operation;
-import com.app.Signature_Operation;
-import com.app.Symmetric_Encryption;
+import com.app.*;
+
 import java.security.PublicKey;
 
 public class ApplicationStart {
 
-    public static void main(String [] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         String plainText = "Hello Im Vishal, How are you If you are free let me know 4534 @233243";
 
         // Symmetric Encryption ---------------------------------------------------
@@ -59,6 +57,31 @@ public class ApplicationStart {
 
         PublicKey publicKey = Certificate_Operation.getPublicKeyFromCertificate(certificateFilePath);
         System.out.println("Public Key from Certificate: " + publicKey);
+
+        System.out.println("------------------------------------------------");
+
+        // KeyStore - Store the Certificate and then load Certificate and public key --------------------
+
+        String keyStore_path = "D:\\practice setup\\IntelliJ\\Cryptography_java_idea\\other_files\\keyStores\\truststore.jks";
+        String keyStore_pass = "123";
+        System.out.println("-------------------KeyStore Operations-------------------");
+
+        KeyStore_Operations.create_keyStore(keyStore_path, keyStore_pass);
+
+        KeyStore_Operations.store_external_certificate(keyStore_path, keyStore_pass, certificateFilePath);
+        PublicKey publicKey2 = KeyStore_Operations.get_external_certificate_publicKey(keyStore_path, keyStore_pass);
+        System.out.println("Public Key from Certificate from key Store: " + publicKey2);
+
+        System.out.println("-------------------KeyStore Delete Operations-------------------");
+
+        System.out.println("Before Delete");
+        KeyStore_Operations.get_content_of_keyStore(keyStore_path, keyStore_pass);
+
+        KeyStore_Operations.delete_keyStore(keyStore_path, keyStore_pass);
+        System.out.println("----------");
+
+        System.out.println("After Delete");
+        KeyStore_Operations.get_content_of_keyStore(keyStore_path, keyStore_pass);
 
         System.out.println("------------------------------------------------");
 
